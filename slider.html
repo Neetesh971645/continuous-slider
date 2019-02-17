@@ -123,7 +123,6 @@
 
 $(function(){
   var $slider = $('#continuous-slider--list');
-
   var sizeImage = 150;
   var items = $slider.children().length;
   var itemswidth = (items * sizeImage); // 140px width for each client item 
@@ -149,7 +148,7 @@ $(function(){
     $(this).text($(this).text() == 'play' ? 'pause' : 'play');
   });
 
-  // NEXT animation
+  // Fast Farword animation
   $( "#next" ).click(function() {
     var $first = $('#continuous-slider--list li:first');
     $first.animate({ 'margin-left': '-100px' }, forwordSpeed );
@@ -160,7 +159,7 @@ $(function(){
   }
   });
 
-  // PREV animation
+  // Rewind animation
   $( "#prev" ).click(function() {
     var $first = $('#continuous-slider--list li:first');
     $first.animate({ 'margin-left': '-100px' }, forwordSpeed );
@@ -182,8 +181,7 @@ $(function(){
     }else{
       $first.stop();
     }
-  }
-
+  } 
 });
 
 
@@ -196,61 +194,61 @@ $(function(){
   <div class="continuous-slider--wrap">
     <ul id="continuous-slider--list" class="clearfix">
       <li>
-        <img src="https://www.hello91.com/growing/images/1.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/2.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/3.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/4.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/5.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/6.jpg" alt="" />
+        <img src="1.jpg" alt="" />
+        <img src="2.jpg" alt="" />
+        <img src="3.jpg" alt="" />
+        <img src="4.jpg" alt="" />
+        <img src="5.jpg" alt="" />
+        <img src="6.jpg" alt="" />
       </li>
       <li>
-        <img src="https://www.hello91.com/growing/images/7.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/8.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/9.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/10.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/11.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/12.jpg" alt="" />
+        <img src="7.jpg" alt="" />
+        <img src="8.jpg" alt="" />
+        <img src="9.jpg" alt="" />
+        <img src="10.jpg" alt="" />
+        <img src="11.jpg" alt="" />
+        <img src="12.jpg" alt="" />
 
       </li>
       <li>
-        <img src="https://www.hello91.com/growing/images/13.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/14.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/15.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/16.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/17.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/18.jpg" alt="" />
+        <img src="13.jpg" alt="" />
+        <img src="14.jpg" alt="" />
+        <img src="15.jpg" alt="" />
+        <img src="16.jpg" alt="" />
+        <img src="17.jpg" alt="" />
+        <img src="18.jpg" alt="" />
       </li>
       <li>
-        <img src="https://www.hello91.com/growing/images/19.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/20.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/21.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/22.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/23.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/24.jpg" alt="" />
+        <img src="19.jpg" alt="" />
+        <img src="20.jpg" alt="" />
+        <img src="21.jpg" alt="" />
+        <img src="22.jpg" alt="" />
+        <img src="23.jpg" alt="" />
+        <img src="24.jpg" alt="" />
       </li>
       <li>
-        <img src="https://www.hello91.com/growing/images/25.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/26.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/27.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/28.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/29.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/30.jpg" alt="" />
+        <img src="25.jpg" alt="" />
+        <img src="26.jpg" alt="" />
+        <img src="27.jpg" alt="" />
+        <img src="28.jpg" alt="" />
+        <img src="29.jpg" alt="" />
+        <img src="30.jpg" alt="" />
       </li>
       <li>
-        <img src="https://www.hello91.com/growing/images/12.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/29.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/3.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/14.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/25.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/16.jpg" alt="" />
+        <img src="12.jpg" alt="" />
+        <img src="29.jpg" alt="" />
+        <img src="3.jpg" alt="" />
+        <img src="14.jpg" alt="" />
+        <img src="25.jpg" alt="" />
+        <img src="16.jpg" alt="" />
       </li>
       <li>
-        <img src="https://www.hello91.com/growing/images/7.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/28.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/9.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/10.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/21.jpg" alt="" />
-        <img src="https://www.hello91.com/growing/images/27.jpg" alt="" />
+        <img src="7.jpg" alt="" />
+        <img src="28.jpg" alt="" />
+        <img src="9.jpg" alt="" />
+        <img src="10.jpg" alt="" />
+        <img src="21.jpg" alt="" />
+        <img src="27.jpg" alt="" />
 
       </li>
     </ul>
