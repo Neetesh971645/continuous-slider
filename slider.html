@@ -1,0 +1,269 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+  <title>Growing.com</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/jquery.modal.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+</head>
+
+<style>
+#continuous-slider {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
+  overflow: hidden;
+}
+.continuous-slider--wrap
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+#continuous-slider--list {
+  margin: 0;
+  padding: 0;
+}
+#continuous-slider ul {
+  display: block;
+  list-style: none;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+}
+
+#continuous-slider li {
+    flex: 1 0 150px;
+    max-width: 150px;
+    height: 100vh;
+    float: left;
+    list-style: none;
+}
+
+#continuous-slider img {
+  vertical-align: middle;
+  max-width: 100%;
+  max-height: 100%;
+  -webkit-transition: 0 linear left;
+  -moz-transition: 0 linear left;
+  transition: 0 linear left;
+  opacity: 1;
+}
+
+.option-section {
+  position: absolute;
+    top: 10%;
+    left: 10%;
+}
+
+#continuous-slider button#stop {
+
+}
+
+.pause-btn {
+    background-image: url(play-pause-btn.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+    width: 15px;
+    background-position: -15px 0;
+    border-radius: 0;
+    border: 0;
+    text-indent: 9999px;
+}
+.play-btn {
+    background-image: url(play-pause-btn.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+    width: 15px;
+    background-position: 0 0;
+    border-radius: 0;
+    border: 0;
+    text-indent: 9999px;
+}
+#next {
+    background-image: url(next.png);
+    background-size: 22px;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    background-position: 7px 7px;
+    border-radius: 0;
+    border: 0;
+    text-indent: 9999px;
+    cursor: pointer;
+}
+#prev {
+    background-image: url(next.png);
+    background-size: 22px;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    background-position: 7px 10px;
+    border-radius: 0;
+    border: 0;
+    text-indent: 9999px;
+    cursor: pointer;
+    transform: rotate(180deg);
+}
+
+</style>
+
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+
+$(function(){
+  var $slider = $('#continuous-slider--list');
+
+  var sizeImage = 150;
+  var items = $slider.children().length;
+  var itemswidth = (items * sizeImage); // 140px width for each client item 
+  $slider.css('width',itemswidth);
+  var rotating = true;
+  var sliderspeed = 0;
+  var seeitems = setInterval(rotateSlider, sliderspeed);
+  var forwordSpeed = 4000;
+  
+  // START/STOP animation
+  $("#stop").click(function() {
+    $("#stop").toggleClass('play-btn');
+    if (($("#stop").text()) === 'play') {
+      rotating = true;
+      $("#next").show();
+      $("#prev").show();
+    }
+    if (($("#stop").text()) === 'pause') {
+      rotating = false;
+      $("#next").hide();
+      $("#prev").hide();
+    }
+    $(this).text($(this).text() == 'play' ? 'pause' : 'play');
+  });
+
+  // NEXT animation
+  $( "#next" ).click(function() {
+    var $first = $('#continuous-slider--list li:first');
+    $first.animate({ 'margin-left': '-100px' }, forwordSpeed );
+    forwordSpeed=forwordSpeed-1000;
+    if (forwordSpeed == 1000) {
+    $("#next").hide();
+    $("#prev").show();
+  }
+  });
+
+  // PREV animation
+  $( "#prev" ).click(function() {
+    var $first = $('#continuous-slider--list li:first');
+    $first.animate({ 'margin-left': '-100px' }, forwordSpeed );
+    forwordSpeed=forwordSpeed+1000;
+    if (forwordSpeed == 6000) {
+    $("#prev").hide();
+    $("#next").show();
+  }
+  });
+
+  // Animation Logic
+  function rotateSlider() {
+    if(rotating != false) {
+      var $first = $('#continuous-slider--list li:first');
+      $first.animate({ 'margin-left': '-'+sizeImage+'px' }, forwordSpeed, "linear", function() {
+        $first.remove().css({ 'margin-left': '0px' });
+        $('#continuous-slider--list li:last').after($first);
+      });
+    }else{
+      $first.stop();
+    }
+  }
+
+});
+
+
+</script>
+</head>
+
+<body>
+
+<div id="continuous-slider">
+  <div class="continuous-slider--wrap">
+    <ul id="continuous-slider--list" class="clearfix">
+      <li>
+        <img src="https://www.hello91.com/growing/images/1.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/2.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/3.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/4.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/5.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/6.jpg" alt="" />
+      </li>
+      <li>
+        <img src="https://www.hello91.com/growing/images/7.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/8.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/9.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/10.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/11.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/12.jpg" alt="" />
+
+      </li>
+      <li>
+        <img src="https://www.hello91.com/growing/images/13.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/14.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/15.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/16.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/17.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/18.jpg" alt="" />
+      </li>
+      <li>
+        <img src="https://www.hello91.com/growing/images/19.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/20.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/21.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/22.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/23.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/24.jpg" alt="" />
+      </li>
+      <li>
+        <img src="https://www.hello91.com/growing/images/25.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/26.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/27.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/28.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/29.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/30.jpg" alt="" />
+      </li>
+      <li>
+        <img src="https://www.hello91.com/growing/images/12.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/29.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/3.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/14.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/25.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/16.jpg" alt="" />
+      </li>
+      <li>
+        <img src="https://www.hello91.com/growing/images/7.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/28.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/9.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/10.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/21.jpg" alt="" />
+        <img src="https://www.hello91.com/growing/images/27.jpg" alt="" />
+
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="option-section">
+  <button id="prev">Prev</button>
+  <button id="stop" class="pause-btn" type="button">pause</button>
+  <button id="next">Next</button>
+</div>
+  
+
+</body>
+
+</html>
